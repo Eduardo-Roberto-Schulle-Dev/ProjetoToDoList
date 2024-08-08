@@ -22,7 +22,7 @@ Este projeto é uma aplicação web de lista de tarefas desenvolvida utilizando 
 
 1- Clone o repositório 
 
-git clone https://github.com/seu-usuario/seu-repositorio.git
+git clone https://github.com/Eduardo-Roberto-Schulle-Dev/ProjetoToDoList.git
 
 2- Navegue até o diretório do seu projeto
 
