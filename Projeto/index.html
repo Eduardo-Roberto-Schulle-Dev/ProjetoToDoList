@@ -3,70 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>To-do-list | Senacc </title>
-    <!-- CSS do Projeto-->
-    <link rel="stylesheet" href="style.css">
-    <!--Amazing font-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <!--Js do Projet-->
-    <script src="scripts.js" defer></script>
+    <title>Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        .login-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .login-container h1 {
+            margin-bottom: 20px;
+        }
+        .login-container input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .login-container button {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: white;
+            font-size: 16px;
+        }
+    </style>
 </head>
 <body>
-    <div class="todo-container">    
-        <header>
-            <h1>Senac Avançado</h1>
-        </header>
-        <form  id="todo-form">
-        <p> Adicione a sua tarefa</p>
-        <div class="form-control">
-            <input type="text" id="todo-input"placeholder="O que você vai fazer ?">
-            <button type="submit">
-                <i class="fat-thin fa-plus"></i>
-            </button>
-        </div>
-    </form>
-    <form id="edit-form" class="hide">
-        <p>Edite a sua tarefa:</p>
-        <div class="form-control">
-            <input type="text" id="edit-input">
-            <button type="submit">
-                <i class="fat-solid fa-check-double"></i>
-            </button>
-        </div>
-        <button id="cancel-edit-btn">Cancelar</button>
-    </form>
-    <div id="toolbar">
-        <div id="search">
-            <h4>Pesquisar:</h4>
-            <form>
-                <input type="text" id="search-input" placeholder="Buscar">
-                <button id="erase-button">
-                    <i class="fa-solid fa-delete-left"></i>
-                </button>
-            </form>
+    <div class="login-container">
+        <h1>Login Senac Avançado</h1>
+        <form id="login-form">
+            <input type="text" id="username" placeholder="Usuário" required>
+            <input type="password" id="password" placeholder="Senha" required>
+            <button type="submit">Iniciar</button>
+        </form>
     </div>
-    <div id="filter">
-        <h4>Filtrar:</h4>
-            <select id="">
-               <option value="all">Todos</option>    
-               <option value="done">Feitos</option>
-               <option value="todo">A fazer</option> 
-            </select>
-  </div>
-  <div id="todo-list">
-    <div class="todo done">
-        <h3>Estou fazendo alguma coisa...</h3>
-        <button class="finish-todo">
-            <i class="fa-solid fa-check"></i>
-        </button>
-        <button class="edit-todo">
-            <i class="fa-solid fa-pen"></i>
-        </button>
-        <button class="remove-todo">
-            <i class="fa-solid fa-xmark"></i>
-        </button>
-    </div>
-  </div>
-</div> 
+
+    <script>
+        document.getElementById('login-form').addEventListener('submit', function(event) {
+            event.preventDefault(); 
+           
+            window.location.href = 'principal.html'; // Redireciona para a página principal
+        });
+    </script>
 </body>
 </html>
