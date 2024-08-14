@@ -45,6 +45,14 @@ cd seu-repositorio
 - Pesquisar: Utilize a barra de pesquisa para buscar uma tarefa específica.
 - Filtrar Tarefas: Use o filtro para visualizar tarefas concluídas, não concluídas ou todas.
 
+ 6 -  📮 Implantação
+
+  Para implantar o projeto, basta hospedar os arquivos principal.html, style.css, e scripts.js em um servidor web. Não há dependências adicionais, então pode ser feito em qualquer servidor de hospedagem estática.
+
+ 7 - 🔨 Construído com
+- HTML5 - Estrutura do projeto
+- CSS3 - Estilização e layout
+- JavaScript - Funcionalidades interativas
 
 
 
