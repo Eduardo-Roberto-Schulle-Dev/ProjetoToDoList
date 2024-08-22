@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!--Js do Projet-->
     <script src="scripts.js" defer></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
     <div class="todo-container">    
@@ -19,8 +20,8 @@
         <form  id="todo-form">
         <p> Adicione a sua tarefa</p>
         <div class="form-control">
-            <input type="text" id="todo-input"placeholder="O que você vai fazer ?">
-            <button type="submit">
+            <input type="text" id="todo_input"placeholder="O que você vai fazer ?">
+            <button type="submit" >
                 <i class="fat-thin fa-plus"></i>
             </button>
         </div>
@@ -47,12 +48,13 @@
     </div>
     <div id="filter">
         <h4>Filtrar:</h4>
-            <select id="">
-               <option value="all">Todos</option>    
-               <option value="done">Feitos</option>
-               <option value="todo">A fazer</option> 
-            </select>
-  </div>
+        <select id="filter-select">
+          <option value="all">Todos</option>
+          <option value="done">Feitos</option>
+          <option value="todo">A fazer</option>
+        </select>
+      </div>
+      
   <div id="todo-list">
     <div class="todo done">
         <h3>Estou fazendo alguma coisa...</h3>
@@ -68,5 +70,6 @@
     </div>
   </div>
 </div> 
+
 </body>
 </html>
