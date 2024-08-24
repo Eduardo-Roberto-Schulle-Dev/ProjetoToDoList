@@ -80,10 +80,14 @@ function insertolocalStorage() {
   var item = $('#todo_input').val().trim();
   if (item != '') {
     var uniqueKey = 'todo_' + new Date().getTime();
-    localStorage.setItem(uniqueKey, item);
+    var data = {
+      "name": item,
+      "done": false
+    }
+    localStorage.setItem(uniqueKey, JSON.stringify(data));
     $('#todo_input').val('');
     loadTodosFromLocalStorage();
-  } else {
+  } else {  
     alert('Insira um valor válido!');
     $('#todo_input').val('');
   }
@@ -93,19 +97,18 @@ function loadTodosFromLocalStorage() {
   var todoList = $('#todo-list');
   todoList.empty(); // Limpa a lista antes de adicionar os itens
 
-  for (var i = 0; i < localStorage.length; i++) {
+  for (var i = 0; i < localStorage.length; i++) { 
     var key = localStorage.key(i);
     if (key.startsWith('todo_')) {
-      var value = localStorage.getItem(key);
-
+      var value = JSON.parse(localStorage.getItem(key));
       // Cria a estrutura HTML para cada item da lista
       var listItem = $(`
-        <div class="todo">
-          <h3>${value}</h3>
+        <div class="todo ${value.done == true ? " done " : ""}">
+          <h3>${value.name}</h3>
           <button class="finish-todo" onclick="finishTodo('${key}')">
             <i class="fa-solid fa-check"></i>
           </button>
-          <button class="edit-todo" onclick="editTodo('${key}', '${value}')">
+          <button class="edit-todo" onclick="editTodo('${key}', '${value.name}')">
             <i class="fa-solid fa-pen"></i>
           </button>
           <button class="remove-todo" onclick="removeTodo('${key}')">
@@ -123,9 +126,8 @@ function loadTodosFromLocalStorage() {
 
 // Função para editar um item
 function editTodo(key, value) {
-  $('#edit-input').val(value);
-  $('#edit-form').removeClass('hide');
-  $('#todo-form').addClass('hide');
+  // $('#edit-input').val(value);
+  // $('#edit-form').removeClass('hide');
 
   // Evento de edição
   $('#edit-form').off('submit').on('submit', function(e) {
@@ -134,11 +136,10 @@ function editTodo(key, value) {
     
     // Atualiza o valor no localStorage
     if (newValue.trim() !== '') {
-      localStorage.setItem(key, newValue);
+      updateTodoNameLocalStorage(key,newValue);
     }
+
     
-    $('#edit-form').addClass('hide');
-    $('#todo-form').removeClass('hide');
     loadTodosFromLocalStorage();
   });
 }
@@ -161,11 +162,26 @@ function finishTodo(key) {
 // Função para atualizar o status de uma tarefa no localStorage
 function updateTodoStatusLocalStorage(todoKey) {
   const todoValue = localStorage.getItem(todoKey);
+  console.log(todoValue)
   if (todoValue) {
-    const isDone = JSON.parse(localStorage.getItem(`${todoKey}_done`)) || false;
-    localStorage.setItem(`${todoKey}_done`, !isDone);
+    const item = JSON.parse(localStorage.getItem(`${todoKey}`));
+    console.log(item)
+    localStorage.setItem(`${todoKey}`, JSON.stringify({"name": item.name,"done":! item.done}));
   }
 }
+
+
+
+function updateTodoNameLocalStorage(todoKey,newName) {
+  const todoValue = localStorage.getItem(todoKey);
+  console.log(todoValue)
+  if (todoValue) {
+    const item = JSON.parse(localStorage.getItem(`${todoKey}`));
+    console.log(item.done)
+    localStorage.setItem(`${todoKey}`, JSON.stringify({"name": newName,"done": item.done}));
+  }
+}
+
 
 // Função para filtrar tarefas
 function filterTodos(filterValue) {
