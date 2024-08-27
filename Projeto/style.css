@@ -12,6 +12,9 @@ body {
     background-image: url('Senac.jpg');
     background-position: center;
     background-size: cover;
+    display: flex;
+    height: 100vh;
+    
 }
 
 button {
